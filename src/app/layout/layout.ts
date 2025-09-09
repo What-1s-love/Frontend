@@ -1,3 +1,15 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-layout',
+  imports: [],
+  templateUrl: './layout.html',
+  styleUrl: './layout.css'
+})
+export class Layout {
+
+}
+
 export class LayoutComponent {
-  appTitle = 'Мій Angular додаток';
+  appTitle = 'Новини ІТ-індустрії';
 }
