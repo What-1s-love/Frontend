@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router'; 
 
 @Component({
   selector: 'app-layout',
-  imports: [],
-  templateUrl: './layout.html',
-  styleUrl: './layout.css'
+  templateUrl: './layout.html',  
+  styleUrls: ['./layout.css'],
+  imports: [RouterModule]
 })
-export class Layout {
-
-}
 
 export class LayoutComponent {
   appTitle = 'Новини ІТ-індустрії';
