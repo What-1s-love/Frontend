@@ -1,0 +1,10 @@
+/* src/app/items-list/items-list.css */
+.list-container {
+  display: grid;
+  /* Розміщувати стільки карток по 320px, скільки влізе */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Центруємо контейнер */
+}

@@ -1,0 +1,11 @@
+footer {
+  background-color: #222;
+  color: #aaa;
+  padding: 20px 40px;
+  text-align: center;
+  margin-top: 40px; /* Відступ від контенту */
+}
+
+p {
+  margin: 0;
+}
