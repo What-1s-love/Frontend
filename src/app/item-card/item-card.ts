@@ -12,6 +12,5 @@ import { CommonModule } from '@angular/common'; // 3. Імпорт CommonModule 
   styleUrls: ['./item-card.css']
 })
 export class ItemCardComponent {
-  // 5. Створюємо "вхідну" властивість
-  @Input() article?: Article; // '?' означає, що вона може бути undefined
+  @Input() article?: Article;
 }

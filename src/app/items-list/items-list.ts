@@ -20,7 +20,8 @@ export class ItemsListComponent {
       summary: 'Нова версія Angular CLI збігається з версією з Лабораторної 1 :)',
       imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular', // Тимчасове зображення
       date: new Date('2025-09-10'),
-      category: 'Frameworks'
+      category: 'Frameworks',
+      isNew: true
     },
     {
       id: 2,
