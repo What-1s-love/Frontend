@@ -1,7 +1,7 @@
 <div class="card" 
      *ngIf="article"
      [ngClass]="{ 'card-framework': article.category === 'Frameworks' }">
-  <span class="badge-new" *ngIf="article.isNew">НОВЕ</span>
+  <span class="badge-new" *ngIf="isNew">НОВЕ</span>
   <img [src]="article.imageUrl" [alt]="article.title">
 
   <div class="card-content">
