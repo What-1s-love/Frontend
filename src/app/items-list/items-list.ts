@@ -19,16 +19,15 @@ export class ItemsListComponent {
       title: 'Вийшов Angular v20.2.1!',
       summary: 'Нова версія Angular CLI збігається з версією з Лабораторної 1 :)',
       imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular', // Тимчасове зображення
-      date: new Date('2025-09-10'),
-      category: 'Frameworks',
-      isNew: true
+      date: new Date('2025-11-11'),
+      category: 'Frameworks'
     },
     {
       id: 2,
       title: 'TypeScript 5.8: Що нового?',
       summary: 'Огляд ключових оновлень у новій версії мови.',
       imageUrl: 'https://placehold.co/300x150/3066BE/FFF?text=TypeScript',
-      date: new Date('2025-09-09'),
+      date: new Date('2025-11-09'),
       category: 'Languages'
     },
     {
@@ -36,7 +35,7 @@ export class ItemsListComponent {
       title: 'Git: Основи роботи з гілками',
       summary: 'Як ефективно використовувати гілки для розробки.',
       imageUrl: 'https://placehold.co/300x150/F06543/FFF?text=Git',
-      date: new Date('2025-09-08'),
+      date: new Date('2025-11-08'),
       category: 'Tools'
     }
   ];
