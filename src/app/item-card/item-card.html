@@ -8,5 +8,6 @@
     <h3>{{ article.title }}</h3>
     <p>{{ article.summary }}</p>
     <small>{{ article.category }} - {{ article.date | date: 'dd.MM.yyyy' }}</small>
+    <button (click)="onDetailsClick()">Детальніше</button>
   </div>
 </div>

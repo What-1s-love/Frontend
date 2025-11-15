@@ -2,23 +2,29 @@ import { Component } from '@angular/core';
 import { Article } from '../shared/models/article.model';
 import { CommonModule } from '@angular/common'; 
 import { ItemCardComponent } from '../item-card/item-card'; 
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent], // <--- ОСЬ ВИПРАВЛЕННЯ
+  imports: [CommonModule, ItemCardComponent, FormsModule], 
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent {
 
-  // 2. СТВОРЕННЯ МАСИВУ
-  articles: Article[] = [
+  public handleArticleSelect(article: Article): void {
+    console.log('Обратно статтю (з батьківського компонента):', article.title);
+  }
+
+  public searchText: string = ''; 
+
+  allArticles: Article[] = [
     {
       id: 1,
       title: 'Вийшов Angular v20.2.1!',
       summary: 'Нова версія Angular CLI збігається з версією з Лабораторної 1 :)',
-      imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular', // Тимчасове зображення
+      imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular', 
       date: new Date('2025-11-11'),
       category: 'Frameworks'
     },
@@ -42,4 +48,14 @@ export class ItemsListComponent {
 
   constructor() { }
 
+  public get filteredArticles(): Article[] {
+
+    if (!this.searchText) {
+      return this.allArticles;
+    }
+
+    return this.allArticles.filter(article =>
+      article.title.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 }

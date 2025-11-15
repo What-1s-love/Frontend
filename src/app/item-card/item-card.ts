@@ -1,6 +1,6 @@
 // src/app/item-card/item-card.component.ts
 
-import { Component, Input } from '@angular/core'; // 1. Імпорт Input
+import { Component, Input, Output, EventEmitter } from '@angular/core'; // 1. Імпорт Input
 import { Article } from '../shared/models/article.model';
 import { CommonModule } from '@angular/common'; // 3. Імпорт CommonModule (для *ngIf та 'date')
 
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common'; // 3. Імпорт CommonModule 
 })
 export class ItemCardComponent {
   @Input() article?: Article;
+  @Output() select = new EventEmitter<Article>();
 
   public get isNew(): boolean {
     // Якщо даних статті ще немає, вона не нова
@@ -33,4 +34,7 @@ export class ItemCardComponent {
     // Якщо з моменту публікації пройшло менше 3 днів, новина - НОВА.
     return diffInDays < 3;
   }
+  public onDetailsClick(): void {
+  this.select.emit(this.article);
+}
 }
