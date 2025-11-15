@@ -59,3 +59,17 @@ small {
 .card-framework {
   border-left: 5px solid #963484; 
 }
+button {
+  background-color: #337ab7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #286090;
+}
