@@ -8,3 +8,18 @@
   max-width: 1200px;
   margin: 0 auto; /* Центруємо контейнер */
 }
+
+.search-container {
+  display: flex;           /* Використовуємо flexbox */
+  justify-content: center; /* Центруємо по горизонталі */
+  margin: 20px 0;          /* Відступи зверху і знизу */
+  padding: 0 20px;         /* Відступи з боків, щоб не прилипало до країв на мобільному */
+}
+
+.search-container input {
+  width: 100%;             /* На всю доступну ширину */
+  max-width: 400px;        /* Але не ширше 400px */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

@@ -1,4 +1,14 @@
+<div class="search-container">
+  <input 
+    type="text" 
+    [(ngModel)]="searchText" 
+    placeholder="Пошук за назвою...">
+</div>
 
 <div class="list-container">
-  <app-item-card *ngFor="let art of articles" [article]="art"></app-item-card>
+  <app-item-card 
+    *ngFor="let art of filteredArticles" 
+    [article]="art"
+    (select)="handleArticleSelect($event)">
+  </app-item-card>
 </div>

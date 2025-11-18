@@ -1,45 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ItemCardComponent } from '../item-card/item-card';
 import { Article } from '../shared/models/article.model';
-import { CommonModule } from '@angular/common'; 
-import { ItemCardComponent } from '../item-card/item-card'; 
+import { DataService } from '../shared/services/data'; // Імпорт сервісу
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent], // <--- ОСЬ ВИПРАВЛЕННЯ
+  imports: [CommonModule, ItemCardComponent, FormsModule],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsListComponent {
+export class ItemsListComponent implements OnInit {
 
-  // 2. СТВОРЕННЯ МАСИВУ
-  articles: Article[] = [
-    {
-      id: 1,
-      title: 'Вийшов Angular v20.2.1!',
-      summary: 'Нова версія Angular CLI збігається з версією з Лабораторної 1 :)',
-      imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular', // Тимчасове зображення
-      date: new Date('2025-11-11'),
-      category: 'Frameworks'
-    },
-    {
-      id: 2,
-      title: 'TypeScript 5.8: Що нового?',
-      summary: 'Огляд ключових оновлень у новій версії мови.',
-      imageUrl: 'https://placehold.co/300x150/3066BE/FFF?text=TypeScript',
-      date: new Date('2025-11-09'),
-      category: 'Languages'
-    },
-    {
-      id: 3,
-      title: 'Git: Основи роботи з гілками',
-      summary: 'Як ефективно використовувати гілки для розробки.',
-      imageUrl: 'https://placehold.co/300x150/F06543/FFF?text=Git',
-      date: new Date('2025-11-08'),
-      category: 'Tools'
+  public searchText: string = '';
+  public allArticles: Article[] = []; // Тут тепер пусто, дані прийдуть з сервісу
+
+  // Інжектуємо сервіс
+  constructor(private dataService: DataService) {}
+
+  // Отримуємо дані при старті
+  ngOnInit(): void {
+    this.allArticles = this.dataService.getData();
+  }
+
+  // Getter для фільтрації (пошук)
+  public get filteredArticles(): Article[] {
+    if (!this.searchText) {
+      return this.allArticles;
     }
-  ];
+    return this.allArticles.filter(article =>
+      article.title.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 
-  constructor() { }
-
+  // Обробка кліку на кнопку "Детальніше"
+  public handleArticleSelect(article: Article): void {
+    console.log('Обрано статтю (з батьківського компонента):', article.title);
+  }
 }
