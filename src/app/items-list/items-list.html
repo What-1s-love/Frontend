@@ -6,11 +6,9 @@
 </div>
 
 <div class="list-container">
-
   <app-item-card 
     *ngFor="let art of filteredArticles" 
     [article]="art"
     (select)="handleArticleSelect($event)">
   </app-item-card>
-
 </div>

@@ -5,5 +5,4 @@ export interface Article {
     imageUrl: string;
     date: Date;
     category: string;
-    isNew?: boolean;
 }
