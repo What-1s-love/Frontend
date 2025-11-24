@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ItemCardComponent } from '../item-card/item-card';
 import { Article } from '../shared/models/article.model';
-import { DataService } from '../shared/services/data'; // Імпорт сервісу
+import { DataService } from '../shared/services/data';
+import { Subscription } from 'rxjs'; 
 
 @Component({
   selector: 'app-items-list',
@@ -12,31 +13,32 @@ import { DataService } from '../shared/services/data'; // Імпорт серв�
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnDestroy { 
 
   public searchText: string = '';
-  public allArticles: Article[] = []; // Тут тепер пусто, дані прийдуть з сервісу
+  public articles: Article[] = []; 
+  private subscription: Subscription = new Subscription(); 
 
-  // Інжектуємо сервіс
   constructor(private dataService: DataService) {}
 
-  // Отримуємо дані при старті
   ngOnInit(): void {
-    this.allArticles = this.dataService.getData();
+    
+    this.subscription = this.dataService.getArticles().subscribe(data => {
+      this.articles = data;
+    });
   }
 
-  // Getter для фільтрації (пошук)
-  public get filteredArticles(): Article[] {
-    if (!this.searchText) {
-      return this.allArticles;
-    }
-    return this.allArticles.filter(article =>
-      article.title.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+ 
+  public onSearchChange(): void {
+    
+    this.dataService.filterArticles(this.searchText);
   }
 
-  // Обробка кліку на кнопку "Детальніше"
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   public handleArticleSelect(article: Article): void {
-    console.log('Обрано статтю (з батьківського компонента):', article.title);
+    console.log('Обрано статтю:', article.title);
   }
 }

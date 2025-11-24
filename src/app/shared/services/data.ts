@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../models/article.model';
+import { BehaviorSubject, Observable } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  // Приватний масив даних
-  private articles: Article[] = [
+  private allArticles: Article[] = [
     {
       id: 1,
       title: 'Вийшов Angular v20.2.1!',
       summary: 'Нова версія Angular CLI збігається з версією з Лабораторної 1 :)',
       imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular',
-      date: new Date('2025-09-10'),
+      date: new Date('2025-11-10'), 
       category: 'Frameworks'
     },
     {
@@ -34,10 +34,23 @@ export class DataService {
     }
   ];
 
+  private articlesSubject = new BehaviorSubject<Article[]>(this.allArticles);
+
   constructor() { }
 
-  // Метод для отримання даних
-  public getData(): Article[] {
-    return this.articles;
+  
+  public getArticles(): Observable<Article[]> {
+    return this.articlesSubject.asObservable();
+  }
+
+
+  public filterArticles(searchTerm: string): void {
+   
+    const filtered = this.allArticles.filter(article =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    
+    this.articlesSubject.next(filtered);
   }
 }
