@@ -14,7 +14,8 @@ export class DataService {
       summary: 'Нова версія Angular CLI збігається з версією з Лабораторної 1 :)',
       imageUrl: 'https://placehold.co/300x150/963484/FFF?text=Angular',
       date: new Date('2025-11-10'), 
-      category: 'Frameworks'
+      category: 'Frameworks',
+      fullText: 'Angular v20.2.1 приносить значні покращення продуктивності та оновлені інструменти розробки. Команда зосередилась на покращенні гідратації та зменшенні розміру бандлів. Тепер розробляти великі корпоративні додатки стало ще легше завдяки новим сигналам та покращеному Change Detection.'
     },
     {
       id: 2,
@@ -22,7 +23,8 @@ export class DataService {
       summary: 'Огляд ключових оновлень у новій версії мови.',
       imageUrl: 'https://placehold.co/300x150/3066BE/FFF?text=TypeScript',
       date: new Date('2025-09-09'),
-      category: 'Languages'
+      category: 'Languages',
+      fullText: 'TypeScript 5.8 вводить нові можливості для роботи з декораторами та покращує виведення типів. Розробники отримають більше контролю над типізацією в складних сценаріях. Також було оптимізовано швидкість компіляції великих проєктів.'
     },
     {
       id: 3,
@@ -30,7 +32,8 @@ export class DataService {
       summary: 'Як ефективно використовувати гілки для розробки.',
       imageUrl: 'https://placehold.co/300x150/F06543/FFF?text=Git',
       date: new Date('2025-09-08'),
-      category: 'Tools'
+      category: 'Tools',
+      fullText: 'Робота з гілками (branching) — це основа Git flow. У цій статті ми розглянемо, як створювати гілки, перемикатися між ними та вирішувати конфлікти злиття (merge conflicts). Ви дізнаєтесь про команди git checkout, git merge та git rebase.'
     }
   ];
 
@@ -52,5 +55,9 @@ export class DataService {
     
     
     this.articlesSubject.next(filtered);
+  }
+
+  public getArticleById(id: number): Article | undefined {
+    return this.allArticles.find(article => article.id === id);
   }
 }

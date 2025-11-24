@@ -11,6 +11,6 @@
     <p>{{ article.summary }}</p>
     <small>{{ article.category }} - {{ article.date | date: 'dd.MM.yyyy' }}</small>
     
-    <button (click)="onDetailsClick()">Детальніше</button>
+    <button [routerLink]="['/items', article.id]">Детальніше</button>
   </div>
 </div>
