@@ -1,17 +1,18 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Article } from '../shared/models/article.model';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-item-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './item-card.html',
   styleUrls: ['./item-card.css']
 })
 export class ItemCardComponent {
   @Input() article?: Article;
-  @Output() select = new EventEmitter<Article>();
 
   // Динамічне обчислення "Новизни"
   public get isNew(): boolean {
@@ -26,8 +27,4 @@ export class ItemCardComponent {
     return diffInDays < 3; // Новина вважається новою менше 3 днів
   }
 
-  // Метод для кнопки
-  public onDetailsClick(): void {
-    this.select.emit(this.article);
-  }
 }

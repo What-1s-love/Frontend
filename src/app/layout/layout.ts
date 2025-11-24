@@ -11,7 +11,6 @@ import { FooterComponent } from '../footer/footer';
   standalone: true,
   imports: [
     RouterModule, 
-    ItemsListComponent,
     HeaderComponent, 
     FooterComponent   
   ],
