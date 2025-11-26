@@ -30,7 +30,4 @@ export class ItemsListComponent implements OnInit {
     this.dataService.filterArticles(this.searchText);
   }
 
-  public handleArticleSelect(article: Article): void {
-    console.log('Обрано:', article.title);
-  }
 }

@@ -9,7 +9,6 @@
 <div class="list-container">
   <app-item-card 
     *ngFor="let art of articles$ | async" 
-    [article]="art"
-    (select)="handleArticleSelect($event)">
+    [article]="art">
   </app-item-card>
 </div>
