@@ -1,0 +1,38 @@
+<div class="form-container">
+  <h2>Додати нову статтю</h2>
+
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="title">Заголовок</label>
+      <input id="title" type="text" formControlName="title" placeholder="Введіть назву...">
+      
+      <div class="error-msg" *ngIf="titleControl?.invalid && titleControl?.touched">
+        Поле обов'язкове!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Короткий опис</label>
+      <textarea id="description" formControlName="description" rows="3" placeholder="Кілька речень для прев'ю..."></textarea>
+      
+      <div class="error-msg" *ngIf="descriptionControl?.invalid && descriptionControl?.touched">
+        <span *ngIf="descriptionControl?.errors?.['required']">Опис обов'язковий. </span>
+        <span *ngIf="descriptionControl?.errors?.['minlength']">Мінімум 10 символів. </span>
+        <span *ngIf="descriptionControl?.errors?.['maxlength']">Максимум 200 символів.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fullText">Повний текст статті</label>
+      <textarea id="fullText" formControlName="fullText" rows="10" placeholder="Введіть повний зміст статті тут..."></textarea>
+      
+      <div class="error-msg" *ngIf="fullTextControl?.invalid && fullTextControl?.touched">
+        <span *ngIf="fullTextControl?.errors?.['required']">Текст статті обов'язковий. </span>
+        <span *ngIf="fullTextControl?.errors?.['minlength']">Мінімум 50 символів.</span>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="articleForm.invalid">Зберегти</button>
+  </form>
+</div>
