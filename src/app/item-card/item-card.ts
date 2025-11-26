@@ -3,7 +3,7 @@ import { Article } from '../shared/models/article.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TruncatePipe } from '../shared/pipes/truncate-pipe';
-import { HighlightDirective } from '../shared/directives/highlight.directive';
+import { HighlightDirective } from '../shared/directives/highlight';
 
 
 @Component({
