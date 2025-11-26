@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ItemCardComponent } from '../item-card/item-card';
-import { Article } from '../shared/models/article.model';
 import { DataService } from '../shared/services/data';
-import { Subscription } from 'rxjs'; 
+import { Observable } from 'rxjs';
+import { Article } from '../shared/models/article.model';
 
 @Component({
   selector: 'app-items-list',
@@ -13,32 +13,24 @@ import { Subscription } from 'rxjs';
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsListComponent implements OnInit, OnDestroy { 
+export class ItemsListComponent implements OnInit { 
 
   public searchText: string = '';
-  public articles: Article[] = []; 
-  private subscription: Subscription = new Subscription(); 
+  
+  public articles$: Observable<Article[]> | undefined;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    
-    this.subscription = this.dataService.getArticles().subscribe(data => {
-      this.articles = data;
-    });
+  
+    this.articles$ = this.dataService.getArticles();
   }
 
- 
   public onSearchChange(): void {
-    
     this.dataService.filterArticles(this.searchText);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   public handleArticleSelect(article: Article): void {
-    console.log('Обрано статтю:', article.title);
+    console.log('Обрано:', article.title);
   }
 }
