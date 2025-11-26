@@ -60,4 +60,10 @@ export class DataService {
   public getArticleById(id: number): Article | undefined {
     return this.allArticles.find(article => article.id === id);
   }
+
+  public addArticle(newArticle: Article): void {
+    this.allArticles.push(newArticle);
+    
+    this.articlesSubject.next(this.allArticles);
+  }
 }

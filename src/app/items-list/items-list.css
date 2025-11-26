@@ -23,3 +23,14 @@
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
+.create-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none; /* Якщо це буде посилання */
+}
