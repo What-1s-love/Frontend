@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../shared/services/data';
-import { Article } from '../shared/models/article.model';
 
 @Component({
   selector: 'app-item-form',
@@ -12,12 +11,14 @@ import { Article } from '../shared/models/article.model';
   templateUrl: './item-form.html',
   styleUrls: ['./item-form.css']
 })
-export class ItemForm {
+export class ItemFormComponent {
 
   public articleForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]), // Короткий опис
-    fullText: new FormControl('', [Validators.required, Validators.minLength(50)]) // <-- НОВЕ ПОЛЕ: Повний текст
+    description: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    fullText: new FormControl('', [Validators.required, Validators.minLength(50)]),
+    imageUrl: new FormControl('', [Validators.required]),
+    category: new FormControl('Custom', [Validators.required])
   });
 
   constructor(
@@ -27,23 +28,25 @@ export class ItemForm {
 
   get titleControl() { return this.articleForm.get('title'); }
   get descriptionControl() { return this.articleForm.get('description'); }
-  get fullTextControl() { return this.articleForm.get('fullText'); } 
+  get fullTextControl() { return this.articleForm.get('fullText'); }
+  get imageControl() { return this.articleForm.get('imageUrl'); }
+  get categoryControl() { return this.articleForm.get('category'); }
 
   public onSubmit(): void {
     if (this.articleForm.valid) {
       const formValue = this.articleForm.value;
 
-      const newArticle: Article = {
-        id: Math.floor(Math.random() * 10000),
+     
+      const articleData = {
         title: formValue.title ?? '',
         summary: formValue.description ?? '', 
-        fullText: formValue.fullText ?? '',   
-        imageUrl: 'https://placehold.co/300x150/4CAF50/FFF?text=New+Item',
-        date: new Date(),
-        category: 'Custom'
+        fullText: formValue.fullText ?? '',
+        imageUrl: formValue.imageUrl ?? '',
+        category: formValue.category ?? 'Custom'
       };
 
-      this.dataService.addArticle(newArticle);
+      this.dataService.addArticle(articleData);
+
       this.router.navigate(['/items']);
     } else {
       this.articleForm.markAllAsTouched();
