@@ -3,18 +3,41 @@
 
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
     
+    <!-- 1. Заголовок -->
     <div class="form-group">
       <label for="title">Заголовок</label>
-      <input id="title" type="text" formControlName="title" placeholder="Введіть назву...">
+      <input id="title" type="text" formControlName="title" placeholder="Наприклад: Вийшов Angular 19">
       
       <div class="error-msg" *ngIf="titleControl?.invalid && titleControl?.touched">
         Поле обов'язкове!
       </div>
     </div>
 
+    <!-- 2. Категорія (Випадаючий список) -->
+    <div class="form-group">
+      <label for="category">Категорія</label>
+      <select id="category" formControlName="category">
+        <option value="Frameworks">Frameworks</option>
+        <option value="Languages">Languages</option>
+        <option value="Tools">Tools</option>
+        <option value="Custom">Інше</option>
+      </select>
+    </div>
+
+    <!-- 3. Посилання на картинку -->
+    <div class="form-group">
+      <label for="imageUrl">Посилання на зображення</label>
+      <input id="imageUrl" type="text" formControlName="imageUrl" placeholder="https://...">
+      
+      <div class="error-msg" *ngIf="imageControl?.invalid && imageControl?.touched">
+        Потрібно вказати посилання на картинку.
+      </div>
+    </div>
+
+    <!-- 4. Короткий опис (rows="3" - приблизно 3 рядки тексту) -->
     <div class="form-group">
       <label for="description">Короткий опис</label>
-      <textarea id="description" formControlName="description" rows="3" placeholder="Кілька речень для прев'ю..."></textarea>
+      <textarea id="description" formControlName="description" rows="3" placeholder="Коротко про головне (відобразиться на картці)"></textarea>
       
       <div class="error-msg" *ngIf="descriptionControl?.invalid && descriptionControl?.touched">
         <span *ngIf="descriptionControl?.errors?.['required']">Опис обов'язковий. </span>
@@ -23,9 +46,10 @@
       </div>
     </div>
 
+    <!-- 5. Повний текст (rows="10" - велике поле для статті) -->
     <div class="form-group">
       <label for="fullText">Повний текст статті</label>
-      <textarea id="fullText" formControlName="fullText" rows="10" placeholder="Введіть повний зміст статті тут..."></textarea>
+      <textarea id="fullText" formControlName="fullText" rows="10" placeholder="Тут пиши всю статтю детально..."></textarea>
       
       <div class="error-msg" *ngIf="fullTextControl?.invalid && fullTextControl?.touched">
         <span *ngIf="fullTextControl?.errors?.['required']">Текст статті обов'язковий. </span>
