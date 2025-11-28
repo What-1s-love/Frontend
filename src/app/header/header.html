@@ -1,3 +1,21 @@
 <header>
-  <h1>Новини IT-індустрії</h1>
+  <div class="header-container">
+    <div class="logo">
+      <a routerLink="/">{{ appTitle }}</a>
+    </div>
+
+    <nav>
+      <a routerLink="/" routerLinkActive="active">Головна</a>
+
+      <ng-container *ngIf="!(authService.isAuthenticated$ | async)">
+        <a routerLink="/login" routerLinkActive="active">Вхід</a>
+        <a routerLink="/register" routerLinkActive="active">Реєстрація</a>
+      </ng-container>
+
+      <ng-container *ngIf="authService.isAuthenticated$ | async">
+
+        <button (click)="logout()" class="logout-btn">Вихід</button>
+      </ng-container>
+    </nav>
+  </div>
 </header>

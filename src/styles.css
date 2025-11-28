@@ -11,6 +11,16 @@ body, html {
   color: #333;
 }
 
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f0f2f5; /* Світло-сірий фон, щоб картки виділялися */
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

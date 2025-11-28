@@ -1,13 +1,14 @@
 footer {
-  background-color: #2c3e50; 
-  color: #bdc3c7; 
+  background-color: #2c3e50; /* Темний фон футера */
+  color: #ecf0f1;
   padding: 20px 0;
+  margin-top: auto; /* Притискає футер до низу, якщо мало контенту */
   text-align: center;
-  font-size: 0.9rem;
-  border-top: 4px solid #dd0031; 
-  margin-top: auto; 
+  border-top: 1px solid #34495e; /* Трохи світліша лінія зверху */
 }
 
-p {
+footer p {
   margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
