@@ -2,7 +2,6 @@
 
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ItemsListComponent } from '../items-list/items-list';
 import { HeaderComponent } from '../header/header'; 
 import { FooterComponent } from '../footer/footer'; 
 

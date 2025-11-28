@@ -1,12 +1,9 @@
-
-
 {
-  {
   "users": [
     {
-      "id": 1,
-      "email": "admin@test.com",
-      "password": "123"
+      "id": 1764356626930,
+      "email": "Приклад",
+      "password": "Приклад"
     }
   ],
   "articles": [

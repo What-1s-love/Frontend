@@ -1,0 +1,87 @@
+/* Контейнер-картка по центру */
+.auth-box {
+  background: white;
+  max-width: 400px;
+  width: 100%; /* Додано: щоб не стискалася на мобільних */
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-sizing: border-box; /* Важливо: щоб padding не ламав ширину */
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+  text-align: left; /* Гарантуємо, що текст зліва */
+  display: block; /* Займає окремий рядок */
+}
+
+input {
+  width: 100%; /* РОЗТЯГУЄМО НА ВСЮ ШИРИНУ */
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  box-sizing: border-box; /* Важливо: щоб поле не вилазило за межі */
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+button {
+  width: 100%; /* Кнопка теж на всю ширину */
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
