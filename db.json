@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Вийшов Angular v20.2.1!",
+      "summary": "Нова версія Angular CLI збігається з версією з Лабораторної 1 :)",
+      "imageUrl": "https://placehold.co/300x150/963484/FFF?text=Angular",
+      "date": "2025-11-10T10:00:00.000Z",
+      "category": "Frameworks",
+      "fullText": "Angular v20.2.1 приносить значні покращення продуктивності та оновлені інструменти розробки. Команда зосередилась на покращенні гідратації та зменшенні розміру бандлів."
+    },
+    {
+      "id": 2,
+      "title": "TypeScript 5.8: Що нового?",
+      "summary": "Огляд ключових оновлень у новій версії мови.",
+      "imageUrl": "https://placehold.co/300x150/3066BE/FFF?text=TypeScript",
+      "date": "2025-09-09T10:00:00.000Z",
+      "category": "Languages",
+      "fullText": "TypeScript 5.8 вводить нові можливості для роботи з декораторами та покращує виведення типів."
+    },
+    {
+      "id": 3,
+      "title": "Git: Основи роботи з гілками",
+      "summary": "Як ефективно використовувати гілки для розробки.",
+      "imageUrl": "https://placehold.co/300x150/F06543/FFF?text=Git",
+      "date": "2025-09-08T10:00:00.000Z",
+      "category": "Tools",
+      "fullText": "Робота з гілками (branching) — це основа Git flow. У цій статті ми розглянемо, як створювати гілки."
+    },
+    {
+      "id": "9bc1",
+      "title": "Приклад... Якась новина!!! ",
+      "summary": "Да це приклад щось там якась новина типу є",
+      "fullText": "Думи мої, думи мої,\nЛихо мені з вами!\nНащо стали на папері\nСумними рядами?..\nЧом вас вітер не розвіяв\nВ степу, як пилину?\nЧом вас лихо не приспало,\nЯк свою дитину?..\n",
+      "imageUrl": "https://www.dignited.com/wp-content/uploads/2021/08/Google-Account-Vs-Gmail-Vs-Google-Workplace-1024x576.png?is-pending-load=1",
+      "category": "Languages",
+      "date": "2025-11-28T17:16:44.301Z"
+    }
+  ]
+}
