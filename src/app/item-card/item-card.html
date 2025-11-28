@@ -1,5 +1,5 @@
 <div class="card" 
-    appHighlight
+     appHighlight 
      *ngIf="article"
      [ngClass]="{ 'card-framework': article.category === 'Frameworks' }">
 
@@ -9,9 +9,11 @@
   
   <div class="card-content">
     <h3>{{ article.title }}</h3>
-    <p>{{ article.summary }}</p>
+
+    <p>{{ article.summary | truncate:60 }}</p>
+
     <small>{{ article.category }} - {{ article.date | date: 'dd.MM.yyyy' }}</small>
-    <p><strong>Коротко:</strong> {{ article.summary | truncate:50 }}</p>
+    
     <button [routerLink]="['/items', article.id]">Детальніше</button>
   </div>
 </div>

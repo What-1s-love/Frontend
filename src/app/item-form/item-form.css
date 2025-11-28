@@ -4,13 +4,14 @@
   padding: 30px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   color: #2c3e50;
   margin-bottom: 20px;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .form-group {
@@ -21,57 +22,94 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #555;
+  color: #34495e;
+  font-size: 0.95rem;
 }
 
-input, textarea {
+
+input, textarea, select {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; 
   font-size: 1rem;
-  box-sizing: border-box; /* Щоб padding не ламав ширину */
-  transition: border-color 0.3s;
   font-family: inherit;
+  color: #333;
+  background-color: #f9f9f9; 
+  box-sizing: border-box;
+  transition: all 0.3s ease; 
 }
 
-input:focus, textarea:focus {
-  border-color: #337ab7;
+
+input:focus, textarea:focus, select:focus {
+  border-color: #3498db; 
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1); 
   outline: none;
 }
 
-/* Стиль для помилок */
+
+select {
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  
+ 
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334495e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 40px; 
+}
+
+select:hover {
+  border-color: #bdc3c7;
+}
+
 .error-msg {
   color: #e74c3c;
   font-size: 0.85rem;
-  margin-top: 5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  display: flex;
+  align-items: center;
 }
 
-/* Підсвітка поля з помилкою */
 input.ng-invalid.ng-touched, 
-textarea.ng-invalid.ng-touched {
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
   border-color: #e74c3c;
-  background-color: #fff6f6;
+  background-color: #fffafa;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  background-color: #27ae60; /* Зелений колір для дії "Створити" */
+  padding: 14px;
+  background-color: #27ae60;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);
 }
 
 button:hover:not(:disabled) {
   background-color: #219150;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 button:disabled {
-  background-color: #95a5a6;
+  background-color: #bdc3c7;
   cursor: not-allowed;
+  box-shadow: none;
 }
