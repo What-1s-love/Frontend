@@ -10,32 +10,26 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse) => {
       let errorMessage = '';
 
-      if (error.error instanceof ErrorEvent) {
-        errorMessage = `Помилка з'єднання: ${error.error.message}`;
+      const serverMessage = error.error?.error; 
+
+      if (serverMessage) {
+        errorMessage = serverMessage;
       } else {
-        switch (error.status) {
-          case 400:
-            errorMessage = 'Невірний запит (Bad Request). Перевірте дані.';
-            break;
-          case 401:
-            errorMessage = 'Ви не авторизовані! Увійдіть у систему.';
-            break;
-          case 403:
-            errorMessage = 'Доступ заборонено (Forbidden).';
-            break;
-          case 404:
-            errorMessage = 'Ресурс не знайдено (404).';
-            break;
-          case 500:
-            errorMessage = 'Внутрішня помилка сервера. Спробуйте пізніше.';
-            break;
-          default:
-            errorMessage = `Невідома помилка: ${error.status} ${error.message}`;
-            break;
+        if (error.error instanceof ErrorEvent) {
+          errorMessage = `Помилка з'єднання: ${error.error.message}`;
+        } else {
+          switch (error.status) {
+            case 400: errorMessage = 'Невірні дані запиту.'; break;
+            case 401: errorMessage = 'Необхідна авторизація.'; break;
+            case 403: errorMessage = 'Доступ заборонено.'; break;
+            case 404: errorMessage = 'Ресурс не знайдено.'; break;
+            case 500: errorMessage = 'Помилка сервера.'; break;
+            default: errorMessage = `Помилка: ${error.message}`; break;
+          }
         }
       }
 
-      toastr.error(errorMessage, 'Помилка');
+      toastr.error(errorMessage, 'Увага');
 
       return throwError(() => error);
     })

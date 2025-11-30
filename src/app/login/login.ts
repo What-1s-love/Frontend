@@ -23,8 +23,11 @@ export class LoginComponent {
     const user = { email: this.email, password: this.password };
     
     this.authService.login(user).subscribe({
-      next: () => console.log('Успішний вхід'),
-      error: (err) => alert('Помилка входу! Перевір дані.')
+      next: () => {
+      },
+      error: (err) => {
+        this.password = '';
+      }
     });
   }
 }

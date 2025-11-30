@@ -16,7 +16,7 @@ export class DataService {
   }
 
   private loadArticles(): void {
-    this.http.get<Article[]>('blablabla').pipe(
+    this.http.get<Article[]>('articles').pipe(
       tap(articles => this.articlesSubject.next(articles)),
       catchError(error => {
         return of([]); 

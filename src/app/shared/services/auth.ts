@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, tap, catchError, throwError } from 'rxjs'; // Додали catchError, throwError
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -13,7 +13,9 @@ export class AuthService {
   public isAuthenticated$ = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
 
   register(userData: any) {
-    return this.http.post('register', userData);
+    return this.http.post('register', userData).pipe(
+      catchError(err => throwError(() => err))
+    );
   }
 
   login(userData: any) {
@@ -24,11 +26,11 @@ export class AuthService {
           this.isAuthenticated$.next(true);
           this.router.navigate(['/']);
         }
-      })
+      }),
+      catchError(err => throwError(() => err))
     );
   }
 
-  
   logout() {
     localStorage.removeItem('token');
     this.isAuthenticated$.next(false);
