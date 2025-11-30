@@ -2,14 +2,13 @@ import { Injectable, inject } from '@angular/core';
 import { Article } from '../models/article.model';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   private http = inject(HttpClient);
-
   private articlesSubject = new BehaviorSubject<Article[]>([]);
 
   constructor() {
@@ -17,21 +16,17 @@ export class DataService {
   }
 
   private loadArticles(): void {
-   
-    this.http.get<Article[]>('articles').pipe(
-      catchError(error => {
-        console.error('Помилка завантаження:', error);
-        return of([]); 
-      }),
-    
+    this.http.get<Article[]>('blablabla').pipe(
       tap(articles => this.articlesSubject.next(articles)),
+      catchError(error => {
+        return of([]); 
+      })
     ).subscribe();
   }
 
   public getArticles(): Observable<Article[]> {
     return this.articlesSubject.asObservable();
   }
-
 
   public filterArticles(searchTerm: string): void {
     if (!searchTerm) {
@@ -45,9 +40,8 @@ export class DataService {
   }
 
   public getArticleById(id: number | string): Article | undefined {
-  return this.articlesSubject.value.find(article => article.id == id);
-}
-
+    return this.articlesSubject.value.find(article => article.id == id);
+  }
 
   public addArticle(rawArticle: Omit<Article, 'id' | 'date'>): void {
     const newArticle = {
@@ -58,7 +52,6 @@ export class DataService {
     this.http.post<Article>('articles', newArticle).pipe(
       tap(() => this.loadArticles()),
       catchError(error => {
-        console.error('Помилка додавання:', error);
         return of(null);
       })
     ).subscribe();
