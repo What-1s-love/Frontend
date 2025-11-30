@@ -1,0 +1,16 @@
+<div class="auth-box">
+  <h2>Реєстрація</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" name="email" required>
+
+    <label>Пароль</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+
+    <label>Повторіть пароль</label>
+    <input type="password" [(ngModel)]="confirmPassword" name="confirm" required>
+
+    <button type="submit">Створити акаунт</button>
+  </form>
+  <p>Вже є акаунт? <a routerLink="/login">Увійти</a></p>
+</div>
