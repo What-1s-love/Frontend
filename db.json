@@ -1,3 +1,5 @@
+
+  {
 {
   "users": [
     {
@@ -38,15 +40,6 @@
       "date": "2025-09-08T10:00:00.000Z",
       "category": "Tools",
       "fullText": "Робота з гілками (branching) — це основа Git flow. У цій статті ми розглянемо, як створювати гілки."
-    },
-    {
-      "id": "9bc1",
-      "title": "Приклад... Якась новина!!! ",
-      "summary": "Да це приклад щось там якась новина типу є",
-      "fullText": "Думи мої, думи мої,\nЛихо мені з вами!\nНащо стали на папері\nСумними рядами?..\nЧом вас вітер не розвіяв\nВ степу, як пилину?\nЧом вас лихо не приспало,\nЯк свою дитину?..\n",
-      "imageUrl": "https://www.dignited.com/wp-content/uploads/2021/08/Google-Account-Vs-Gmail-Vs-Google-Workplace-1024x576.png?is-pending-load=1",
-      "category": "Languages",
-      "date": "2025-11-28T17:16:44.301Z"
     }
   ]
 }
