@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../shared/services/auth';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ import { AuthService } from '../shared/services/auth';
 export class RegisterComponent {
   authService = inject(AuthService);
   router = inject(Router);
+  private toastr = inject(ToastrService);
 
   email = '';
   password = '';
@@ -21,17 +23,19 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.password !== this.confirmPassword) {
-      alert('Паролі не співпадають!');
+      this.toastr.error('Паролі не співпадають!', 'Помилка валідації');
       return;
     }
 
-    this.authService.register({ email: this.email, password: this.password })
-      .subscribe({
-        next: () => {
-          alert('Успішна реєстрація!');
-          this.router.navigate(['/login']);
-        },
-        error: () => alert('Помилка! Можливо, такий користувач вже є.')
-      });
+    const user = { email: this.email, password: this.password };
+
+    this.authService.register(user).subscribe({
+      next: () => {
+        this.toastr.success('Реєстрація успішна!', 'Вітаємо'); 
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+      }
+    });
   }
 }
